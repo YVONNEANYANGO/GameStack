@@ -12,15 +12,14 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
-                <ul class="nav navbar-nav navbar-right" style="color:white; font-size:2.5em;">
+                <ul class="nav navbar-nav navbar-center">
                     {% if current_user.is_authenticated %}
-                    <li>
-                        <a href="{{url_for('main.profile',uname=current_user.username)}}" style="color: black;">Profile</a>
+                     <li>
+                        <a class="nav-item nav-link" href="{{ url_for('main.new_Game') }}">Add Game</a>
                     </li>
-                
                     <li>
                         <a class="nav-item nav-link" href="{{ url_for('auth.logout') }}">Sign out</a>
-                    </li>
+                    </li> 
                     {% else %}
                     <li>
                         <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">
@@ -29,9 +28,9 @@
                     <li>
                         <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">
                             <span class="glyphicon glyphicon-user"></span>Sign Up</a>
-                    </li>
+                    </li> 
                     {% endif %}
                 </ul>
-        </div>
-    </div>
-</div>
+                </div>
+                </div>
+                </div>
