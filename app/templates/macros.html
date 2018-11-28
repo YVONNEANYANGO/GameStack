@@ -1,0 +1,5 @@
+{% macro displayGameList(game_list) %} 
+{% for game in game_list %}
+<li>{{ game.title}}</li>
+{% endfor %}
+ {% endmacro %}
