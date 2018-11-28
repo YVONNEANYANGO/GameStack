@@ -1,6 +1,5 @@
 class Source:
     ''' source class to define Source objects '''
-
     def __init__(self,id,name,description,url,category,language,country):
         self.id = id
         self.name = name
@@ -14,6 +13,7 @@ class Source_News:
     ''' source_news to define objects of news from various sources '''
 
     def __init__(self,author,title,description,url,urlToImage,publishedAt):
+
         self.author = author
         self.title = title
         self.description = description

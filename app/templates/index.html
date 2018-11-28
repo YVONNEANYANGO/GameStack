@@ -5,5 +5,35 @@
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 
+
+<!-- Content block -->
 {% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Stay up to date with news from the most trusted Game Review source</h1>
+    </div>
+</div>
+
+<!-- News Sources -->
+<div class="container">
+    <div class="row">
+        {% for article in news %} 
+        <div class="container">
+            <div class="card col-md-12">
+                <div class="col-md-12">
+                    <h4 class="center"> {{article.title}} </h4>
+                    <br><br>
+                    <div class="container-fluid">
+                        <img src="{{ article.urlToImage }}" alt="{{ article.title }} picture" class="img-responsive">
+                        <br>
+                        <a href="{{article.url}}"><button class="btn btn-primary">Read More ..</button></a>
+                    </div>
+                    <br><br>
+                    <h6>Published on {{article.publishedAt}}</h6>
+                </div>
+        </div>
+                {% endfor %}
+    </div>
+</div>
+
 {% endblock %}
