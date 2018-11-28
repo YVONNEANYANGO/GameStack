@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+{{ super() }}
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/css?family=Aclonica|Saira" rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+<link rel ="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center" class="container">
+    <h1 style="font-family: 'Aclonica', sans-serif;">WELCOME TO GAME-STACK WEBSITE</h1>
+    <br><br>
+    <div class="w3-container w3-center w3-animate-zoom">
+      <img src="https://as1.ftcdn.net/jpg/01/25/02/22/500_F_125022233_BN5RbkbIpHGLk0AKPCzklHTxHXPdMmoO.jpg" height="450" width="1150" alt="photo">
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+    <div style="background-color: burlywood" class="jumbotron">
+       <h1 style="text-align: center" style="font-family: 'Aclonica', sans-serif;">ABOUT US</h1> 
+       <P>GameStack application focuses in uniting gamers together by creating a platform for them to freely interract with each other
+          in terms of giving reviews and comments on each particular game.The application offers news overviews about the latest and popular online
+          Games for users and it also allow users to post their favorite games.
+       </P>
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="https://images.pexels.com/photos/1083622/pexels-photo-1083622.jpeg?auto=compress&cs=tinysrgb&h=350" height="200" width="245" alt="photo"><br>
+      </div>
+      <div class="col-md-3">
+        <img src="https://images.pexels.com/photos/1509337/pexels-photo-1509337.jpeg?auto=compress&cs=tinysrgb&h=350" height="200" width="245" alt="photo"><br>
+      </div>
+      <div class="col-md-3">
+          <img src="https://images.pexels.com/photos/207582/pexels-photo-207582.jpeg?auto=compress&cs=tinysrgb&h=350" height="200" width="245" alt="photo"><br> 
+      </div>
+      <div class="col-md-3">
+        <img src="https://images.pexels.com/photos/556966/pexels-photo-556966.jpeg?auto=compress&cs=tinysrgb&h=350" height="200" width="245" alt="photo"><br>
+      </div>
+    </div>
+</div>
+<br><br>
+<div class="container">
+    
+</div>
+
+{% endblock %}
