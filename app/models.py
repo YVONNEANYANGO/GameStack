@@ -15,13 +15,9 @@ class User(UserMixin,db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
-    pass_secure = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
-    bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
-    password_secure = db.Column(db.String(255))
-    blogs = db.relationship('Blog',backref = 'user',lazy = "dynamic")
+    pass_secure = db.Column(db.String(255))
     comment = db.relationship('Comment',backref = 'user',lazy = "dynamic")
    
 
@@ -42,3 +38,34 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+
+class Game(db.Model):
+    __tablename__ = 'games'
+
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(255))
+    body = db.Column(db.String)
+    # Defining the foreign key from the relationship between a user and a game
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    # Defining a one to many relationship between a game and a comment
+    comments = db.relationship('Comment', backref="main_game", lazy="dynamic")
+
+    def __repr__(self):
+        return f'Game {self.title}'
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id =  db.Column(db.Integer, primary_key = True)
+    author = db.Column(db.String(255))
+    comment = db.Column(db.String)
+    # Defining the foreign key from the relationship betweena pitch and a comment
+    game_id = db.Column(db.Integer, db.ForeignKey("games.id"))
+
+    # Defining the foreign key from the relationship between a user and a comment
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def __repr__(self):
+        return f'Comment {self.comment}'

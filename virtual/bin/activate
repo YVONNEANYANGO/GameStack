@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/moringaschool/Documents/Core/GameStack/virtual"
+VIRTUAL_ENV="/home/moringaschool/Documents/GameStack/virtual"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
