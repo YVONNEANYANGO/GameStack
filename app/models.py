@@ -18,7 +18,7 @@ class User(UserMixin,db.Model):
     password_hash = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
-    comment = db.relationship('Comment',backref = 'user',lazy = "dynamic")
+    game = db.relationship('Game',backref = 'user',lazy = "dynamic")
    
 
     #this decorator generates my password and passes it to the passecurecolumn 
@@ -61,11 +61,11 @@ class Comment(db.Model):
     id =  db.Column(db.Integer, primary_key = True)
     author = db.Column(db.String(255))
     comment = db.Column(db.String)
-    # Defining the foreign key from the relationship betweena pitch and a comment
+    # Defining the foreign key from the relationship between game and a comment
     game_id = db.Column(db.Integer, db.ForeignKey("games.id"))
 
     # Defining the foreign key from the relationship between a user and a comment
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def __repr__(self):
         return f'Comment {self.comment}'

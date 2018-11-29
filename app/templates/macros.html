@@ -1,5 +1,9 @@
 {% macro displayGameList(game_list) %} 
 {% for game in game_list %}
 <li>{{ game.title}}</li>
+{% for comment in game.comments%}
+    {{comment.comment}}
+{% endfor %}
+`<a href="{{url_for('main.new_comment', game_id = game.id)}}">Add Comment</a>
 {% endfor %}
  {% endmacro %}

@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 
 
 class GameForm(FlaskForm):
-    title = StringField('Category Games', validators=[DataRequired()])
+    title = StringField('Favorite Games', validators=[DataRequired()])
     body = TextAreaField('add latest games', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
