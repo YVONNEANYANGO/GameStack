@@ -10,14 +10,69 @@
 <link rel ="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+
 {% endblock %}
 
 {% block content %}
+<header class="intro-header" style="background-image: url('http://www.scrappinstuff.com/store/images/Scrappin%20Stuff/40202-Mini-Games-Background.jpg')"></header>
 <div style="text-align: center" class="container">
+  <style>
+    img:hover {
+      animation: shake 0.5s;
+      animation-iteration-count: infinite;
+    }
+  
+    @keyframes shake {
+      0% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+  
+      10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+      }
+  
+      20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+      }
+  
+      30% {
+        transform: translate(3px, 2px) rotate(0deg);
+      }
+  
+      40% {
+        transform: translate(1px, -1px) rotate(1deg);
+      }
+  
+      50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+      }
+  
+      60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+      }
+  
+      70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+      }
+  
+      80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+      }
+  
+      90% {
+        transform: translate(1px, 2px) rotate(0deg);
+      }
+  
+      100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+      }
+    }
+  </style>
     <h1 style="font-family: 'Aclonica', sans-serif;">WELCOME TO GAME-STACK WEBSITE</h1>
     <br><br>
     <div class="w3-container w3-center w3-animate-zoom">
-      <img src="https://as1.ftcdn.net/jpg/01/25/02/22/500_F_125022233_BN5RbkbIpHGLk0AKPCzklHTxHXPdMmoO.jpg" height="450" width="1150" alt="photo">
+      <img src="https://images.pexels.com/photos/682933/pexels-photo-682933.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" height="450" width="1130" alt="photo">
     </div>
 </div>
 <br><br><br>
@@ -54,13 +109,119 @@
     </div>
 </div>
 <br><br><br><br>
+<style amp-custom>
+  .rating {
+    --star-size: 3;
+    /* use CSS variables to calculate dependent dimensions later */
+    padding: 0;
+    /* to prevent flicker when mousing over padding */
+    border: none;
+    /* to prevent flicker when mousing over border */
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    /* for CSS-only style change on hover */
+    text-align: left;
+    /* revert the RTL direction */
+    user-select: none;
+    /* disable mouse/touch selection */
+    font-size: 3em;
+    /* fallback - IE doesn't support CSS variables */
+    font-size: calc(var(--star-size) * 1em);
+    /* because `var(--star-size)em` would be too good to be true */
+    cursor: pointer;
+    /* disable touch feedback on cursor: pointer - http://stackoverflow.com/q/25704650/1269037 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    margin-bottom: 1em;
+  }
+
+  /* the stars */
+  .rating>label {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    /* magic number to overlap the radio buttons on top of the stars */
+    width: calc(var(--star-size) / 3 * 1.1em);
+  }
+
+  .rating>*:hover,
+  .rating>*:hover~label,
+  .rating:not(:hover)>input:checked~label {
+    color: transparent;
+    /* reveal the contour/white star from the HTML markup */
+    cursor: inherit;
+    /* avoid a cursor transition from arrow/pointer to text selection */
+  }
+
+  .rating>*:hover:before,
+  .rating>*:hover~label:before,
+  .rating:not(:hover)>input:checked~label:before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: gold;
+  }
+
+  .rating>input {
+    position: relative;
+    transform: scale(3);
+    /* make the radio buttons big; they don't inherit font-size */
+    transform: scale(var(--star-size));
+    /* the magic numbers below correlate with the font-size */
+    top: -0.5em;
+    /* margin-top doesn't work */
+    top: calc(var(--star-size) / 6 * -1em);
+    margin-left: -2.5em;
+    /* overlap the radio buttons exactly under the stars */
+    margin-left: calc(var(--star-size) / 6 * -5em);
+    z-index: 2;
+    /* bring the button above the stars so it captures touches/clicks */
+    opacity: 0;
+    /* comment to see where the radio buttons are */
+    font-size: initial;
+    /* reset to default */
+  }
+
+  form.amp-form-submit-error [submit-error] {
+    color: red;
+  }
+</style>
+<div style="text-align: center" class="container">
+    <h1 style="font-family: 'Aclonica', sans-serif;">Rate Us</h1>
+      <form id="rating" class="p2" method="post" action-xhr="/samples_templates/rating/set" target="_blank">
+        <fieldset class="rating" style="text-align: center">
+          <input name="rating" type="radio" id="rating5" value="5" on="change:rating.submit" />
+          <label for="rating5" title="5 stars">☆</label>
+
+          <input name="rating" type="radio" id="rating4" value="4" on="change:rating.submit" />
+          <label for="rating4" title="4 stars">☆</label>
+
+          <input name="rating" type="radio" id="rating3" value="3" on="change:rating.submit" />
+          <label for="rating3" title="3 stars">☆</label>
+
+          <input name="rating" type="radio" id="rating2" value="2" on="change:rating.submit" checked="checked" />
+          <label for="rating2" title="2 stars">☆</label>
+
+          <input name="rating" type="radio" id="rating1" value="1" on="change:rating.submit" />
+          <label for="rating1" title="1 stars">☆</label>
+        </fieldset>
+        <div submit-success>
+          <template type="amp-mustache">
+            <p>Thanks for rating {{rating}} star(s)!</p>
+          </template>
+        </div>
+        <div submit-error>
+          <template type="amp-mustache">
+            Looks like something went wrong. Please try to rate again. {{error}}
+          </template>
+        </div>
+      </form>
+</div>
     <div style="text-align: center" class="container" id="contacts">
       <div style="background-color: burlywood" class="well">
         <h1 style="font-family: 'Aclonica', sans-serif;">CONTACTS</h1>
-        <ul>
-            <li><strong>Contact Number : 254 707 398 965</strong></li>
-            <li><strong>Email Address :gamestack@gmail.com</strong></li>
-        </ul>
+            <p><strong>Contact Number : 254 707 398 965</strong></p>
+            <p><strong>Email Address :gamestack@gmail.com</strong></p>
             <h1 style="font-family: 'Aclonica', sans-serif;">Follow us on social media:</h1>
             <div class="social-icons"></div>
                 <div class="row">
@@ -82,105 +243,104 @@
       </div>
     </div>
     <div class="container">
-      <style>
-        body {font-family: Arial, Helvetica, sans-serif;}
-      * {box-sizing: border-box;}
-      
-      /* Button used to open the chat form - fixed at the bottom of the page */
-      .open-button {
-        background-color: #555;
-        color: white;
-        padding: 16px 20px;
-        border: none;
-        cursor: pointer;
-        opacity: 0.8;
-        position: fixed;
-        bottom: 23px;
-        right: 28px;
-        width: 280px;
-      }
-      
-      /* The popup chat - hidden by default */
-      .chat-popup {
-        display: none;
-        position: fixed;
-        bottom: 0;
-        right: 15px;
-        border: 3px solid #f1f1f1;
-        z-index: 9;
-      }
-      
-      /* Add styles to the form container */
-      .form-container {
-        max-width: 300px;
-        padding: 10px;
-        background-color: white;
-      }
-      
-      /* Full-width textarea */
-      .form-container textarea {
-        width: 100%;
-        padding: 15px;
-        margin: 5px 0 22px 0;
-        border: none;
-        background: #f1f1f1;
-        resize: none;
-        min-height: 200px;
-      }
-      
-      /* When the textarea gets focus, do something */
-      .form-container textarea:focus {
-        background-color: #ddd;
-        outline: none;
-      }
-      
-      /* Set a style for the submit/send button */
-      .form-container .btn {
-        background-color: #4CAF50;
-        color: white;
-        padding: 16px 20px;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        margin-bottom:10px;
-        opacity: 0.8;
-      }
-      
-      /* Add a red background color to the cancel button */
-      .form-container .cancel {
-        background-color: red;
-      }
-      
-      /* Add some hover effects to buttons */
-      .form-container .btn:hover, .open-button:hover {
-        opacity: 1;
-      }
-      </style>
-        <button style="font-family: 'Aclonica', sans-serif;" class="open-button" onclick="openForm()">Chatting Site</button>
-      
-        <div class="chat-popup" id="myForm">
-          <form action="/action_page.php" class="form-container">
-            <h1 style="font-family: 'Aclonica', sans-serif;">Chat</h1>
-      
-            <label for="msg"><b>Message</b></label>
-            <textarea placeholder="Type message.." name="msg" required></textarea>
-      
-            <button type="submit" class="btn">Send</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-          </form>
-        </div>
-      
-        <script>
-          function openForm() {
-            document.getElementById("myForm").style.display = "block";
-          }
+            <style>
+              body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+            
+            /* Button used to open the chat form - fixed at the bottom of the page */
+            .open-button {
+              background-color: #555;
+              color: white;
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              opacity: 0.8;
+              position: fixed;
+              bottom: 23px;
+              right: 28px;
+              width: 280px;
+            }
+            
+            /* The popup chat - hidden by default */
+            .chat-popup {
+              display: none;
+              position: fixed;
+              bottom: 0;
+              right: 15px;
+              border: 3px solid #f1f1f1;
+              z-index: 9;
+            }
+            
+            /* Add styles to the form container */
+            .form-container {
+              max-width: 300px;
+              padding: 10px;
+              background-color: white;
+            }
+            
+            /* Full-width textarea */
+            .form-container textarea {
+              width: 100%;
+              padding: 15px;
+              margin: 5px 0 22px 0;
+              border: none;
+              background: #f1f1f1;
+              resize: none;
+              min-height: 200px;
+            }
+            
+            /* When the textarea gets focus, do something */
+            .form-container textarea:focus {
+              background-color: #ddd;
+              outline: none;
+            }
+            
+            /* Set a style for the submit/send button */
+            .form-container .btn {
+              background-color: #4CAF50;
+              color: white;
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              margin-bottom:10px;
+              opacity: 0.8;
+            }
+            
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+              background-color: red;
+            }
+            
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+              opacity: 1;
+            }
+            </style>
+              <button style="font-family: 'Aclonica', sans-serif;" class="open-button" onclick="openForm()">Chatting Site</button>
+            
+              <div class="chat-popup" id="myForm">
+                <form action="/action_page.php" class="form-container">
+                  <h1 style="font-family: 'Aclonica', sans-serif;">Chat</h1>
+            
+                  <label for="msg"><b>Message</b></label>
+                  <textarea placeholder="Type message.." name="msg" required></textarea>
+            
+                  <button type="submit" class="btn">Send</button>
+                  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+              </div>
+            
+              <script>
+                function openForm() {
+                  document.getElementById("myForm").style.display = "block";
+                }
 
-          function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-          }
-        </script>
-
-    </div>
+                function closeForm() {
+                  document.getElementById("myForm").style.display = "none";
+                }
+              </script>  
+  </div>
 
 
 {% endblock %}

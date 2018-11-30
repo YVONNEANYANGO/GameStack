@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+{{message}}
+{% endfor %}
+<div class="w3-container w3-center w3-animate-zoom">
+    <div class="container" style="background-color: blanchedalmond">
+        <a href="{{url_for('main.message')}}">Post Chat</a>
+        {{wtf.quick_form(chat_form)}}
+    </div>
+</div>
+{% endblock %}
