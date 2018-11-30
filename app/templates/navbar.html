@@ -22,6 +22,11 @@
                     </li> 
                     {% else %}
                     <li>
+                        <a href="{{url_for('main.subscriber')}}">
+                            <h3>Subscribe</h3>
+                        </a>
+                    </li>
+                    <li>
                         <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">
                             <span class="glyphicon glyphicon-log-in"></span>Sign in</a>
                     </li>

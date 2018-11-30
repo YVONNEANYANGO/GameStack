@@ -1,9 +1,31 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%} 
+{% import "bootstrap/wtf.html" as wtf %} 
 
-{% block styles %}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
+{% block styles %} {{ super() }}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-{% block content %}
+{% endblock%}
+{% block content%}
+ {% if current_user.is_authenticated %}
+    width="1200" height="1000">
+    <button>
+        <a href="{{url_for('main.game')}}">
+            <strong> Post Games</strong>
+        </a>
+    </button>
+    {% endif %}
+    <div class="w3-container w3-center w3-animate-zoom">
+        <a href="{{url_for('main.subscriber')}}">Subscriber</a>
+        <div class="container" style="width: 50%; background-color: burlywood;opacity: 0.7;">
+            <p>
+                <strong>Enter your Email and Username to Subscribe</strong>
+            </p>
+            <p>
+                <strong>Be Notified Everytime There's A New Post</strong>
+            </p>
+            {{ wtf.quick_form(form) }}
+        </div>
+        {% for category in game %}
+    </div>
+    {% endfor %}
 {% endblock %}

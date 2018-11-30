@@ -1,16 +1,12 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from . import main
 from flask_login import login_required, current_user
-from .forms import GameForm, CommentForm
-from ..models import User,Game, Comment
+from .forms import GameForm, CommentForm,SubscriberForm
+from . import main
+from ..models import User,Game, Comment,Subscriber
 from ..import db
+from ..email import mail_message
 
-@main.route('/')
-def index():
-    """
-    Function that returns the index page
-    """
-    return render_template('index.html')
     
 @main.route('/game/new', methods=["GET", "POST"])
 @login_required
@@ -41,6 +37,21 @@ def new_comment(game_id):
         return redirect(url_for('main.new_Game'))
     comments = Comment.query.all()
     return render_template('form.html', comment_form=comment_form, comment_list=comments)
+
+
+
+@main.route('/', methods=['GET','POST'])
+def subscriber():
+    subscriber_form=SubscriberForm()
+    if subscriber_form.validate_on_submit():
+        subscriber= Subscriber(email=subscriber_form.email.data,title = subscriber_form.title.data)
+        db.session.add(subscriber)
+        db.session.commit()
+        mail_message("Welcome to the Gamestack-app ","email/welcome_subscriber",subscriber.email,subscriber=subscriber)
+    subscriber = Game.query.all()
+    fashion = Game.query.all()
+    return render_template('index.html',subscriber=subscriber,form=subscriber_form) 
+
 
 
 

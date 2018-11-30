@@ -69,3 +69,25 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'Comment {self.comment}'
+
+
+class Subscriber(UserMixin, db.Model):
+    __tablename__="subscribers"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    title = db.Column(db.String(255))
+    email = db.Column(db.String(255),unique = True,index = True)
+
+
+    def save_subscriber(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_subscribers(cls,id):
+        return Subscriber.query.all()
+         
+
+    def __repr__(self):
+        return f'User {self.email}'
