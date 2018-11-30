@@ -1,6 +1,6 @@
 # GameStack
 
-## Built By Yvonne Anyango,Theonilah Owali,Stephen Mwanduka,
+## Built By Yvonne Anyango,Theonilah Owali,Stephen Mwanduka,Chris Wainaina
 
 ## Brief Description
 
@@ -39,23 +39,16 @@ Benefits for the users...Users are able to:-
 * Javascript
 * CSS
 * HTML
-* CSS
 * Flask
 * Postgres db
 * Python Flask
-* 
-
-
-
-4.php.
-5.Json API
-
+* php
 
 ## How to Access the Application
 
 Run this command in your terminal
-$ git clone https://github.com/YVONNEANYANGO/Pitch.git
-$ cd Pitch
+$ git clone https://github.com/YVONNEANYANGO/GameStack.git
+$ cd GameStack
 
 ## Testing the Application
 
@@ -70,4 +63,4 @@ Email Address:ivonnahbonswuh@gmail.com
 ## License
 
 This project is published under:
-MIT ©2018 Yvonne Anyango
+MIT ©2018 Yvonne Anyango,Theonilah Owali,Stephen Mwanduka,Chris Wainaina
